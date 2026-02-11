@@ -72,9 +72,6 @@ elif demo_step == "Orchestration (Shadow)":
 st.sidebar.markdown("---")
 st.sidebar.write("This guided mode ensures consistent demos across audiences.")
 
-# Optional: show a hint telling viewers which tab to click
-st.sidebar.caption(f"Suggested tab: {tabs[STEP_TO_TAB[demo_step]]._title}")  # remove if it errors
-
 # -----------------------------------------------------------------------------
 # App Shell
 # -----------------------------------------------------------------------------
