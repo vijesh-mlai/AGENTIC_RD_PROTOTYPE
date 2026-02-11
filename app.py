@@ -86,7 +86,7 @@ with tabs[2]:
     st.subheader("Workstream C — Orchestration Layer (Shadow Mode)")
     st.write("Shows how policy shifts change ranking. No execution authority; decision-support only.")
     st.info("This view is intentionally limited to highlight trade-off governance and coordination.")
-    agent = FormulationIntelligenceAgent(model_dir=".")
+    agent = FormulationIntelligenceAgent()
     proposals = agent.propose_next_experiments(n=12)
 
     colA, colB = st.columns(2)
