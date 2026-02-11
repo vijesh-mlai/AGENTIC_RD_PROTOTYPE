@@ -49,9 +49,61 @@ def load_or_make_data():
 
 df, notes = load_or_make_data()
 
-tabs = st.tabs(["Workstream A: Formulation Intelligence","Workstream B: Development Readiness","Workstream C: Orchestration (Shadow)"])
+tabs = st.tabs(["Management View","Management Metrics","Workstream A: Formulation Intelligence","Workstream B: Development Readiness","Workstream C: Orchestration (Shadow)"])
 
+# ---- Executive Summary Tab ----
 with tabs[0]:
+    st.subheader("Executive Summary — Agentic R&D Prototype")
+    st.write("""
+    This prototype demonstrates:
+    - Predictive formulation intelligence
+    - Early risk detection
+    - Policy-driven trade-off orchestration
+    - Evidence traceability support
+    """)
+
+# ---- Management Metrics Tab ----
+with tabs[1]:
+    st.subheader("Management Metrics — Validation Signals (Synthetic)")
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.metric(
+            label="Estimated Experiment Cycles Avoided",
+            value="3–5 per program",
+            delta="Earlier feasibility clarity"
+        )
+
+    with c2:
+        st.metric(
+            label="High-Risk Formulations Flagged Early",
+            value="18%",
+            delta="Before lab execution"
+        )
+
+    with c3:
+        st.metric(
+            label="Evidence Readiness Improvement",
+            value="~30–40%",
+            delta="Cleaner downstream handoff"
+        )
+
+    st.markdown("---")
+
+    st.markdown("### What these metrics represent")
+    st.write("""
+    - **Avoided cycles**: recommendations that deprioritized low-probability paths
+    - **Risk flags**: stability / irritation / QC signals surfaced earlier
+    - **Readiness improvement**: fewer clarification loops downstream
+    """)
+
+    st.info(
+        "These are directional indicators from synthetic data. "
+        "In a real POC, these would be measured against baseline R&D performance."
+    )
+
+with tabs[2]:
     st.subheader("Workstream A — Formulation Intelligence & Trade-off Agent (R&D-owned)")
     st.write("Generate next-best experiment proposals with constraints. Outputs are decision-support only.")
     col1, col2, col3 = st.columns(3)
@@ -80,7 +132,7 @@ with tabs[0]:
     st.download_button("Download ranked recommendations (CSV)", ranked.to_csv(index=False).encode("utf-8"), file_name=f"ranked_{policy}.csv")
     st.download_button("Download recommendation summary (MD)", md.encode("utf-8"), file_name=f"summary_{policy}.md")
 
-with tabs[1]:
+with tabs[3]:
     st.subheader("Workstream B — Development Readiness & Evidence Intelligence (R&D-adjacent)")
     st.write("Creates traceable evidence packs to improve readiness and cross-functional handoff quality (NOT CSR authoring).")
     top_n = st.slider("Evidence pack size", 5, 25, 12, 1)
@@ -97,7 +149,7 @@ with tabs[1]:
     st.download_button("Download evidence pack (CSV)", pack.to_csv(index=False).encode("utf-8"), file_name="evidence_pack.csv")
     st.download_button("Download evidence pack narrative (MD)", md2.encode("utf-8"), file_name="evidence_pack.md")
 
-with tabs[2]:
+with tabs[4]:
     st.subheader("Workstream C — Orchestration Layer (Shadow Mode)")
     st.write("Shows how policy shifts change ranking. No execution authority; decision-support only.")
     st.info("This view is intentionally limited to highlight trade-off governance and coordination.")
