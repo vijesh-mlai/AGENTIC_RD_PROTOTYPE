@@ -9,7 +9,7 @@ FEATURES = ["api_load","solvent_ratio","polymer_pct","surfactant_pct","ph","visc
 class FormulationIntelligenceAgent:
     def __init__(self, model_dir=None):
         if model_dir is None:
-            model_dir = Path(__file__).resolve().parent /
+            model_dir = Path(__file__).resolve().parent / "models"
         else:
             model_dir = Path(model_dir)
         self.m_perm = joblib.load(f"{model_dir}/model_perm.joblib")
