@@ -53,35 +53,45 @@ tabs = st.tabs(["Management View","Management Metrics","Workstream A: Formulatio
 
 # ---- Executive Summary Tab ----
 with tabs[0]:
-    st.subheader("Executive Summary — Agentic R&D Prototype")
-    st.write("""
-    This prototype demonstrates:
-    - Predictive formulation intelligence
-    - Early risk detection
-    - Policy-driven trade-off orchestration
-    - Evidence traceability support
-    """)
+    st.markdown("---")
+    st.subheader("What We Validated vs What We Did Not")
+    c1, c2 = st.columns(2)
 
+    with c1:
+        st.markdown("### ✅ Validated")
+        st.markdown("""
+        - Agentic reasoning for R&D decision support  
+        - Early risk and trade-off visibility  
+        - Traceable, reviewable outputs  
+        - Shadow-mode orchestration  
+        - Human-in-the-loop governance  
+        """)
+    with c2:
+        st.markdown("### ❌ Not Validated")
+        st.markdown("""
+        - Production integration  
+        - Automated execution  
+        - Regulatory submissions or CSRs  
+        - Replacement of scientific judgment  
+        - Use of real or sensitive data  
+        "”")
+        
 # ---- Management Metrics Tab ----
 with tabs[1]:
     st.subheader("Management Metrics — Validation Signals (Synthetic)")
-
     c1, c2, c3 = st.columns(3)
-
     with c1:
         st.metric(
             label="Estimated Experiment Cycles Avoided",
             value="3–5 per program",
             delta="Earlier feasibility clarity"
         )
-
     with c2:
         st.metric(
             label="High-Risk Formulations Flagged Early",
             value="18%",
             delta="Before lab execution"
         )
-
     with c3:
         st.metric(
             label="Evidence Readiness Improvement",
