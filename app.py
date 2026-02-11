@@ -3,7 +3,6 @@ import pandas as pd
 import os
 
 from data_gen import generate_synthetic_formulation_data, generate_synthetic_dev_notes
-# from train_models import train_all -- Not Required when showing in Cloud
 from agents import FormulationIntelligenceAgent, EvidenceReadinessAgent
 from orchestrator import orchestrate
 from authoring import render_formulation_recs_md, render_evidence_pack_md
@@ -25,14 +24,7 @@ def load_or_make_data():
     # notes.to_csv(DATA_NOTES, index=False)
     return df, notes
 
-""" def ensure_models():
-    required = ["model_perm.joblib","model_irr.joblib","model_stab.joblib","model_fail.joblib"]
-    if all(os.path.exists(f) for f in required):
-        return
-    train_all(DATA_FORM, out_dir=".") """
-
 df, notes = load_or_make_data()
-# ensure_models()
 
 tabs = st.tabs(["Workstream A: Formulation Intelligence","Workstream B: Development Readiness","Workstream C: Orchestration (Shadow)"])
 
