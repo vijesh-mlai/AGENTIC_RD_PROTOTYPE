@@ -7,6 +7,29 @@ from agents import FormulationIntelligenceAgent, EvidenceReadinessAgent
 from orchestrator import orchestrate
 from authoring import render_formulation_recs_md, render_evidence_pack_md
 
+# ---- Simple Login Gate Logic----
+APP_PASSWORD = os.environ.get("APP_PASSWORD", "demo-access")
+def login_gate():
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+
+    if not st.session_state.authenticated:
+        st.title("🔒 Restricted Access")
+        st.write("This prototype is for internal validation purposes only.")
+
+        pwd = st.text_input("Enter access password", type="password")
+
+        if st.button("Access Demo"):
+            if pwd == APP_PASSWORD:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Invalid password")
+
+        st.stop()  # ⬅️ Critical: stops rest of app from running
+
+login_gate()
+
 st.set_page_config(page_title="Agentic R&D Topical Demo", layout="wide")
 st.title("Agentic AI Validation Demo — Topical Product R&D (Synthetic Data)")
 st.caption("Three-workstream prototype: (A) Formulation Intelligence, (B) Development Readiness, (C) Orchestration (shadow mode).")
