@@ -41,6 +41,35 @@ login_gate()
 # App Shell
 # -----------------------------------------------------------------------------
 st.set_page_config(page_title="Agentic R&D Topical Demo", layout="wide")
+
+# ---------------------------
+# Guided Demo Sidebar
+# ---------------------------
+st.sidebar.title("Guided Demo")
+demo_step = st.sidebar.radio(
+    "Select walkthrough step",
+    [
+        "Overview",
+        "Formulation Intelligence",
+        "Development Readiness",
+        "Orchestration (Shadow)",
+    ],
+)
+
+if demo_step == "Overview":
+    st.info("Start here: Review the Management View.")
+elif demo_step == "Formulation Intelligence":
+    st.info("Next: Explore Workstream A and generate recommendations.")
+elif demo_step == "Development Readiness":
+    st.info("Then: Review traceable evidence packs (NOT CSR).")
+elif demo_step == "Orchestration (Shadow)":
+    st.info("Finally: Compare policy-based rankings.")
+
+st.sidebar.markdown("---")
+st.sidebar.write("This guided mode ensures consistent demos across audiences.")
+
+# ---------------------------
+
 st.title("Agentic AI Validation Demo — Topical Product R&D (Synthetic Data)")
 st.caption(
     "Three-workstream prototype: (A) Formulation Intelligence, "
