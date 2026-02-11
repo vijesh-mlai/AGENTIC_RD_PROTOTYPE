@@ -48,7 +48,7 @@ with tabs[0]:
         max_fail = st.slider("Max QC fail probability (constraint)", 0.05, 0.90, 0.40, 0.01)
     policy = st.selectbox("Decision policy (for ranking)", ["balanced","speed_to_clinic","low_risk"])
 
-    agent = FormulationIntelligenceAgent(model_dir=".")
+    agent = FormulationIntelligenceAgent()
     proposals = agent.propose_next_experiments(
         n=12,
         constraints={"max_irritation": max_irr, "min_stability": min_stab, "max_fail_prob": max_fail}
