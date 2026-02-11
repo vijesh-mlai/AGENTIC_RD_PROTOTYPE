@@ -37,6 +37,43 @@ def login_gate() -> None:
 
 login_gate()
 
+# -----------------------------------------------------------------------------
+# Guided Demo Mode (Sidebar Walkthrough)
+# Place this AFTER login_gate() and BEFORE st.set_page_config / st.title (or right after set_page_config).
+# -----------------------------------------------------------------------------
+st.sidebar.title("Guided Demo")
+demo_step = st.sidebar.radio(
+    "Select walkthrough step",
+    [
+        "Overview",
+        "Formulation Intelligence",
+        "Development Readiness",
+        "Orchestration (Shadow)",
+    ],
+)
+
+# Optional: map step -> suggested tab index (based on your current tab order)
+STEP_TO_TAB = {
+    "Overview": 0,                  # Management View
+    "Formulation Intelligence": 2,   # Workstream A
+    "Development Readiness": 3,      # Workstream B
+    "Orchestration (Shadow)": 4,     # Workstream C
+}
+
+if demo_step == "Overview":
+    st.info("Start here: Review the Management View.")
+elif demo_step == "Formulation Intelligence":
+    st.info("Next: Explore Workstream A and generate recommendations.")
+elif demo_step == "Development Readiness":
+    st.info("Then: Review traceable evidence packs (NOT CSR).")
+elif demo_step == "Orchestration (Shadow)":
+    st.info("Finally: Compare policy-based rankings.")
+
+st.sidebar.markdown("---")
+st.sidebar.write("This guided mode ensures consistent demos across audiences.")
+
+# Optional: show a hint telling viewers which tab to click
+st.sidebar.caption(f"Suggested tab: {tabs[STEP_TO_TAB[demo_step]]._title}")  # remove if it errors
 
 # -----------------------------------------------------------------------------
 # App Shell
@@ -47,7 +84,6 @@ st.caption(
     "Three-workstream prototype: (A) Formulation Intelligence, "
     "(B) Development Readiness, (C) Orchestration (shadow mode)."
 )
-
 
 # -----------------------------------------------------------------------------
 # Data (Synthetic)
