@@ -1,5 +1,8 @@
+streamlit==1.41.1
+altair==5.5.0
 pandas
 numpy
 scikit-learn
+scipy
 joblib
-streamlit
+pyarrow
